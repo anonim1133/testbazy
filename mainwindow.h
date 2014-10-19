@@ -20,6 +20,8 @@ class MainWindow : public QMainWindow
 
 	private:
 		Ui::MainWindow *ui;
+
+		QString wczytajPlik(QString nazwa);
 };
 
 #endif // MAINWINDOW_H
