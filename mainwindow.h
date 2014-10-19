@@ -24,6 +24,8 @@ class MainWindow : public QMainWindow
 
 		void on_btn_wczytajC_clicked();
 
+		void on_btn_clr_clicked();
+
 	private:
 		Ui::MainWindow *ui;
 

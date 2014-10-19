@@ -209,35 +209,35 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="3" column="0">
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="btn_testA">
           <property name="text">
            <string>Test A</string>
           </property>
          </widget>
         </item>
         <item row="3" column="2">
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="btn_testC">
           <property name="text">
            <string>Test C</string>
           </property>
          </widget>
         </item>
         <item row="3" column="3">
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="btn_testALL">
           <property name="text">
            <string>Test wszystkiego</string>
           </property>
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="btn_testB">
           <property name="text">
            <string>Test B</string>
           </property>
          </widget>
         </item>
         <item row="3" column="4">
-         <widget class="QPushButton" name="pushButton_5">
+         <widget class="QPushButton" name="btn_clr">
           <property name="text">
            <string>Wyczyść</string>
           </property>

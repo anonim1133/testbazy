@@ -88,3 +88,28 @@ void MainWindow::on_btn_wczytajC_clicked()
 		ui->txt_C->setPlainText(txt);
 	}
 }
+
+void MainWindow::on_btn_clr_clicked()
+{
+	ui->txt_wynik->setText("");
+}
+
+void MainWindow::on_btn_testA_clicked()
+{
+	ui->txt_wynik->setText("TEST A");
+}
+
+void MainWindow::on_btn_testB_clicked()
+{
+	ui->txt_wynik->setText("TEST B");
+}
+
+void MainWindow::on_btn_testC_clicked()
+{
+	ui->txt_wynik->setText("TEST C");
+}
+
+void MainWindow::on_btn_testALL_clicked()
+{
+	ui->txt_wynik->setText("TEST ALL");
+}
