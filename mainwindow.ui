@@ -105,6 +105,14 @@
        </layout>
       </widget>
       <widget class="QWidget" name="page_zapytania">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>614</width>
+         <height>498</height>
+        </rect>
+       </property>
        <attribute name="label">
         <string>Zapytania</string>
        </attribute>

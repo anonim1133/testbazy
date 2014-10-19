@@ -18,6 +18,12 @@ class MainWindow : public QMainWindow
 	private slots:
 		void on_actionQuit_triggered();
 
+		void on_btn_wczytajA_clicked();
+
+		void on_btn_wczytajB_clicked();
+
+		void on_btn_wczytajC_clicked();
+
 	private:
 		Ui::MainWindow *ui;
 
