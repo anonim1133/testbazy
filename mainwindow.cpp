@@ -1,12 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QFileDialog>
+#include <QMessageBox>
 
-MainWindow::MainWindow(QWidget *parent) :
-	QMainWindow(parent),
-	ui(new Ui::MainWindow)
-{
+
+MainWindow::MainWindow(QWidget *parent) :	QMainWindow(parent),	ui(new Ui::MainWindow){
 	ui->setupUi(this);
+
+	db = QSqlDatabase::addDatabase("QPSQL");
 
 	ui->toolBox->setCurrentIndex(0);
 
@@ -94,9 +95,45 @@ void MainWindow::on_btn_clr_clicked()
 	ui->txt_wynik->setText("");
 }
 
+QString MainWindow::polacz(){
+	if(db.isOpen()) db.close();
+
+	db.setHostName(ui->txt_server->text());
+	db.setPort(ui->txt_port->text().toInt());
+	db.setDatabaseName(ui->txt_dbname->text());
+	db.setUserName(ui->txt_user->text());
+	db.setPassword(ui->txt_pass->text());
+
+	db.open();
+
+	if(db.isOpen()) return "true";
+	else return db.lastError().text();
+}
+
+void MainWindow::on_btn_test_connection_clicked()
+{
+	QString wynik = polacz();
+
+	QMessageBox msgBox;
+	if(wynik == "true"){
+		msgBox.setText("Wynik pozytywny");
+		msgBox.setInformativeText("Udało się nawiązać połączenie z bazą danych.");
+	}else{
+		msgBox.setText("Błąd!");
+		msgBox.setInformativeText(wynik);
+		msgBox.setFixedWidth(500);
+	}
+
+	msgBox.exec();
+}
+
+
 void MainWindow::on_btn_testA_clicked()
 {
-	ui->txt_wynik->setText("TEST A");
+
+
+
+	ui->txt_wynik->setText("TEST A" + db.lastError().text());
 }
 
 void MainWindow::on_btn_testB_clicked()
