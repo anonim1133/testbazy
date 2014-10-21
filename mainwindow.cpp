@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QString>
 
 
 MainWindow::MainWindow(QWidget *parent) :	QMainWindow(parent),	ui(new Ui::MainWindow){
@@ -118,10 +119,11 @@ void MainWindow::on_btn_test_connection_clicked()
 	if(wynik == "true"){
 		msgBox.setText("Wynik pozytywny");
 		msgBox.setInformativeText("Udało się nawiązać połączenie z bazą danych.");
+		ui->statusBar->showMessage("Połączenie działa prawidłowo");
 	}else{
 		msgBox.setText("Błąd!");
 		msgBox.setInformativeText(wynik);
-		msgBox.setFixedWidth(500);
+		ui->statusBar->showMessage("Problem z połączeniem");
 	}
 
 	msgBox.exec();
@@ -130,23 +132,91 @@ void MainWindow::on_btn_test_connection_clicked()
 
 void MainWindow::on_btn_testA_clicked()
 {
+	polacz();
+
+	QString plainTextEditContents = ui->txt_A->toPlainText();
+	QStringList lines = plainTextEditContents.split("\n");
+
+	QString q_txt;
+	QTime myTimer;
+
+	ui->txt_wynik->append("Start A");
+
+	int i = 0;
+	foreach (q_txt, lines) {
+		i++;
+
+		myTimer.start();
+
+		QSqlQuery q = QSqlQuery(q_txt);
+		q.exec();
+
+		ui->txt_wynik->append("Zapytanie zajęło " + myTimer.fromMSecsSinceStartOfDay(myTimer.elapsed()).toString("hh:mm:ss.zzz"));
+	}
 
 
-
-	ui->txt_wynik->setText("TEST A" + db.lastError().text());
+	ui->txt_wynik->append("Koniec "+db.lastError().text());
 }
 
 void MainWindow::on_btn_testB_clicked()
 {
-	ui->txt_wynik->setText("TEST B");
+	polacz();
+
+	QString plainTextEditContents = ui->txt_B->toPlainText();
+	QStringList lines = plainTextEditContents.split("\n");
+
+	QString q_txt;
+	QTime myTimer;
+
+	ui->txt_wynik->append("Start B");
+
+	int i = 0;
+	foreach (q_txt, lines) {
+		i++;
+
+		myTimer.start();
+
+		QSqlQuery q = QSqlQuery(q_txt);
+		q.exec();
+
+		ui->txt_wynik->append("Zapytanie zajęło " + myTimer.fromMSecsSinceStartOfDay(myTimer.elapsed()).toString("hh:mm:ss.zzz"));
+	}
+
+
+	ui->txt_wynik->append("Koniec "+db.lastError().text());
 }
 
 void MainWindow::on_btn_testC_clicked()
 {
-	ui->txt_wynik->setText("TEST C");
+	polacz();
+
+	QString plainTextEditContents = ui->txt_B->toPlainText();
+	QStringList lines = plainTextEditContents.split("\n");
+
+	QString q_txt;
+	QTime myTimer;
+
+	ui->txt_wynik->append("Start B");
+
+	int i = 0;
+	foreach (q_txt, lines) {
+		i++;
+
+		myTimer.start();
+
+		QSqlQuery q = QSqlQuery(q_txt);
+		q.exec();
+
+		ui->txt_wynik->append("Zapytanie zajęło " + myTimer.fromMSecsSinceStartOfDay(myTimer.elapsed()).toString("hh:mm:ss.zzz"));
+	}
+
+
+	ui->txt_wynik->append("Koniec "+db.lastError().text());
 }
 
 void MainWindow::on_btn_testALL_clicked()
 {
-	ui->txt_wynik->setText("TEST ALL");
+	on_btn_testA_clicked();
+	on_btn_testB_clicked();
+	on_btn_testC_clicked();
 }
