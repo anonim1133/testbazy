@@ -4,7 +4,8 @@
 #include <QMessageBox>
 #include <QString>
 
-
+//156.17.234.4
+//ZSBD
 MainWindow::MainWindow(QWidget *parent) :	QMainWindow(parent),	ui(new Ui::MainWindow){
 	ui->setupUi(this);
 
@@ -96,14 +97,21 @@ void MainWindow::on_btn_clr_clicked()
 	ui->txt_wynik->setText("");
 }
 
-QString MainWindow::polacz(){
+QString MainWindow::polacz(QString timeout){
+	db.setConnectOptions("connect_timeout=" + timeout);
+
 	if(db.isOpen()) db.close();
 
 	db.setHostName(ui->txt_server->text());
+	//ui->txt_wynik->append("Host: " + ui->txt_server->text());
 	db.setPort(ui->txt_port->text().toInt());
+	//ui->txt_wynik->append("Port: " + ui->txt_port->text());
 	db.setDatabaseName(ui->txt_dbname->text());
+	//ui->txt_wynik->append("DB: " + ui->txt_dbname->text());
 	db.setUserName(ui->txt_user->text());
+	//ui->txt_wynik->append("User: " + ui->txt_user->text());
 	db.setPassword(ui->txt_pass->text());
+	//ui->txt_wynik->append("Pass: " + ui->txt_pass->text());
 
 	db.open();
 
@@ -113,7 +121,7 @@ QString MainWindow::polacz(){
 
 void MainWindow::on_btn_test_connection_clicked()
 {
-	QString wynik = polacz();
+	QString wynik = polacz("3");
 
 	QMessageBox msgBox;
 	if(wynik == "true"){
@@ -132,7 +140,9 @@ void MainWindow::on_btn_test_connection_clicked()
 
 void MainWindow::on_btn_testA_clicked()
 {
-	polacz();
+	ui->statusBar->showMessage("Testuję A...");
+
+	polacz(ui->txt_timeout->text());
 
 	QString plainTextEditContents = ui->txt_A->toPlainText();
 	QStringList lines = plainTextEditContents.split("\n");
@@ -156,11 +166,14 @@ void MainWindow::on_btn_testA_clicked()
 
 
 	ui->txt_wynik->append("Koniec "+db.lastError().text());
+	ui->statusBar->showMessage("Koniec testu A");
 }
 
 void MainWindow::on_btn_testB_clicked()
 {
-	polacz();
+	ui->statusBar->showMessage("Testuję B...");
+
+	polacz(ui->txt_timeout->text());
 
 	QString plainTextEditContents = ui->txt_B->toPlainText();
 	QStringList lines = plainTextEditContents.split("\n");
@@ -184,11 +197,14 @@ void MainWindow::on_btn_testB_clicked()
 
 
 	ui->txt_wynik->append("Koniec "+db.lastError().text());
+		ui->statusBar->showMessage("Koniec testu B");
 }
 
 void MainWindow::on_btn_testC_clicked()
 {
-	polacz();
+	ui->statusBar->showMessage("Testuję C...");
+
+	polacz(ui->txt_timeout->text());
 
 	QString plainTextEditContents = ui->txt_B->toPlainText();
 	QStringList lines = plainTextEditContents.split("\n");
@@ -196,7 +212,7 @@ void MainWindow::on_btn_testC_clicked()
 	QString q_txt;
 	QTime myTimer;
 
-	ui->txt_wynik->append("Start B");
+	ui->txt_wynik->append("Start C");
 
 	int i = 0;
 	foreach (q_txt, lines) {
@@ -212,6 +228,7 @@ void MainWindow::on_btn_testC_clicked()
 
 
 	ui->txt_wynik->append("Koniec "+db.lastError().text());
+		ui->statusBar->showMessage("Koniec testu C");
 }
 
 void MainWindow::on_btn_testALL_clicked()

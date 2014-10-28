@@ -43,7 +43,7 @@ class MainWindow : public QMainWindow
 		QSqlDatabase db;
 
 		QString wczytajPlik(QString nazwa);
-		QString polacz();
+		QString polacz(QString timeout);
 };
 
 #endif // MAINWINDOW_H

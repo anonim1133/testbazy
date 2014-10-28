@@ -39,7 +39,7 @@
         <string>Ustawienia</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="7" column="4">
+        <item row="8" column="4">
          <spacer name="verticalSpacer">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -69,13 +69,6 @@
           </property>
           <property name="text">
            <string>Port serwera</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0" colspan="5">
-         <widget class="QPushButton" name="btn_test_connection">
-          <property name="text">
-           <string>Sprawdź połączenie</string>
           </property>
          </widget>
         </item>
@@ -120,6 +113,13 @@
           </property>
          </widget>
         </item>
+        <item row="5" column="1" colspan="4">
+         <widget class="QLineEdit" name="txt_pass">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
         <item row="2" column="1" colspan="4">
          <widget class="QLineEdit" name="txt_port">
           <property name="text">
@@ -137,10 +137,24 @@
           </property>
          </widget>
         </item>
-        <item row="5" column="1" colspan="4">
-         <widget class="QLineEdit" name="txt_pass">
+        <item row="7" column="0" colspan="5">
+         <widget class="QPushButton" name="btn_test_connection">
           <property name="text">
-           <string/>
+           <string>Sprawdź połączenie</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0">
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>TimeOut</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1" colspan="4">
+         <widget class="QLineEdit" name="txt_timeout">
+          <property name="text">
+           <string>600</string>
           </property>
          </widget>
         </item>
@@ -151,8 +165,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>145</width>
-         <height>164</height>
+         <width>597</width>
+         <height>504</height>
         </rect>
        </property>
        <attribute name="label">
@@ -242,8 +256,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>474</width>
-         <height>116</height>
+         <width>597</width>
+         <height>504</height>
         </rect>
        </property>
        <attribute name="label">
