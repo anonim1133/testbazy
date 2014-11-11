@@ -1,0 +1,1 @@
+﻿delete from "Zlecenie_stale" where kwota_zlecenia::numeric > 8000

@@ -1,0 +1,1 @@
+﻿delete from "Kredyt" where exists (select * from (select * from "Kredyt" where NOW()-interval '4 years' > data_splaty) AS Pom where "Kredyt".id_kred=Pom.id_kred)

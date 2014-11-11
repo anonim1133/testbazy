@@ -1,0 +1,2 @@
+﻿SELECT id_bank, SUM(kwota_lokaty) FROM ((SELECT id_rach, kwota_lokaty FROM "Lokata" ) AS Lok 
+JOIN (SELECT id_rach, id_bank FROM "RachunekBankowy" ) AS Rach ON Lok.id_rach=Rach.id_rach) group by id_bank

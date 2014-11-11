@@ -1,0 +1,1 @@
+﻿UPDATE "Lokata" SET oprocentowanie=(oprocentowanie * 1.1) where data_zalozenia+30*czas > NOW()- interval '6 month'

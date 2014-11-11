@@ -1,0 +1,1 @@
+﻿DELETE FROM "Depozyt" WHERE data_wybrania BETWEEN current_date - 240 AND current_date
