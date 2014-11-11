@@ -145,7 +145,7 @@ void MainWindow::on_btn_testA_clicked()
 	polacz(ui->txt_timeout->text());
 
 	QString plainTextEditContents = ui->txt_A->toPlainText();
-	QStringList lines = plainTextEditContents.split("\n");
+	QStringList lines = plainTextEditContents.split("KONIEC");
 
 	QString q_txt;
 	QTime myTimer;
@@ -176,7 +176,7 @@ void MainWindow::on_btn_testB_clicked()
 	polacz(ui->txt_timeout->text());
 
 	QString plainTextEditContents = ui->txt_B->toPlainText();
-	QStringList lines = plainTextEditContents.split("\n");
+	QStringList lines = plainTextEditContents.split("KONIEC");
 
 	QString q_txt;
 	QTime myTimer;
@@ -207,7 +207,7 @@ void MainWindow::on_btn_testC_clicked()
 	polacz(ui->txt_timeout->text());
 
 	QString plainTextEditContents = ui->txt_B->toPlainText();
-	QStringList lines = plainTextEditContents.split("\n");
+	QStringList lines = plainTextEditContents.split("KONIEC");
 
 	QString q_txt;
 	QTime myTimer;
